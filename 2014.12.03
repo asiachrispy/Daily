@@ -23,3 +23,89 @@ http://www.java3z.com/cwbwebhome/article/article8/81351.html?id=3534
 实现接口的例子：http://blog.csdn.net/fhm727/article/details/5220003
 
 
+3. 链表的基本操作
+#include <iostream>
+
+using namespace std;
+
+
+struct Node
+{
+    int num;
+    Node* next;
+    
+    Node(int number)
+    {
+        num = number;
+        next = NULL;
+    }
+};
+
+class myLinkedList
+{
+public:
+    Node* head;
+    Node* end;
+    
+    void print();
+    void add(int number);
+    Node* elementAt(int index);
+    
+};
+
+void myLinkedList::print()
+{
+    while(head != NULL)
+    {
+        cout << head->num << "\t";
+        head = head->next;
+        
+    }
+}
+
+void myLinkedList::add(int number)
+{
+    Node* temp = new Node(number);
+    if(head == NULL)
+    {
+        head = temp;
+        end = temp;
+    }
+    else
+    {
+        end->next = temp;
+        end = end->next;
+    }
+    
+   
+}
+
+Node* myLinkedList::elementAt(int index)
+{
+    int temp = -1;
+    while(head != NULL)
+    {
+        temp++;
+        if(index == temp)
+        {
+            return head;
+        }
+        head = head->next;
+    }
+    return NULL;
+}
+
+int main()
+{
+    myLinkedList* test = new myLinkedList();
+    for(int i=0;i<10;i++)
+    {
+        test->add(i);
+    }
+    cout << test->elementAt(5)->num;
+    //test->print();
+    //return 0;
+}
+
+http://www.element14.com/community/community/code_exchange/blog/2013/04/03/c-tutorial--linked-list-operations
+http://www.cnblogs.com/xuyuan77/archive/2008/03/29/1129295.html
