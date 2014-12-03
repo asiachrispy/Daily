@@ -1,1 +1,25 @@
-Test
+1.谈谈final, finally, finalize的区别。
+final是用来修饰变量、函数或类的关键词
+（1）final
+修饰类时，表示该类不可被继承，比如String；
+修饰基础数据时，表示该数据为常量，不可被修改；
+修饰引用时，表示改引用指向的位置不变，但该位置的内容可变
+修饰函数时，表示改方法不可被重新定义（但可以被继承）
+
+（2）finally
+finally是在try...catch句式中用来处理异常情况的关键字
+finally执行的条件是在try执行后，保证一定执行，如果在try语句执行之前就出现return或exit，finally语句不会执行
+一般来说，finally会于try和catch中的控制转移语句之前执行，更复杂的情况需要结合JVM分析
+http://blog.csdn.net/jiasanshou/article/details/6996932
+
+（3）finalize
+finalize是java为类提供的一种特殊的默认方法，当java要回收内存时，首先要调用的就是类中的finalize方法
+http://www.java3z.com/cwbwebhome/article/article8/81351.html?id=3534
+
+2.Anonymous Inner Class (匿名内部类) 是否可以extends(继承)其它类，是否可以implements(实现)interface(接口)?
+///////参考答案：匿名内部类没有名字，不可能通过关键字“extends”来进行继承，但一个内部类可以作为接口，让另一个内部类实现
+使用关键字“extends”和“implements”都是不太可能的，但从实质上来看，匿名内部类可以作为其他类的子类，也能实现接口。
+作为子类的例子：http://bbs.csdn.net/topics/250048578
+实现接口的例子：http://blog.csdn.net/fhm727/article/details/5220003
+
+
