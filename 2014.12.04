@@ -1,1 +1,60 @@
-Test
+第三，Static Nested Class 和 Inner Class的不同，说得越多越好(面试题有的很笼统)。 
+Nested Class 是C++中的说法，在Java中叫Inner Class，是在类中声明的类
+一般内部类需要在外部类实例化之后才能使用，static Nested Class不需要外部类实例化就可以直接使用
+Static Nested Class能够访问外部的static成员，但不能访问动态成员。
+http://blog.csdn.net/caixiexin/article/details/6876629
+
+第四，&和&&的区别。 
+&具有短路功能，第一个表达式为false，则不再计算后面的表达式
+&&计算所有表达式
+
+第五，HashMap和Hashtable的区别。 
+三点不同：
+（1）	继承，HashTable继承自Dictionary类；HashMap继承自AbstractMap类
+（2）	同步，HashTable线程同步；HashMap线程不同步
+（3）	NULL，HashTable不允许空值，HashMap允许空值
+
+第六，Collection 和 Collections的区别。 
+Java.util.Collection是集合接口，是许多接口的父接口，包括List,Set,不包括Map
+Collection
+├List //子接口 允许重复，数组，线性存储
+│├LinkedList 使用双向链表实现存储
+│├ArrayList
+│└Vector  //使用同步方法，线程安全
+│　└Stack  //子类
+└Set  //不允许重复，随机存储，最多有一个null
+Map
+├Hashtable //同步 线程安全效率低 不允许null
+├HashMap //允许空，非同步
+└WeakHashMap
+
+Java.util.Collections是一个包装类，里面包含各种有关集合操作的静态方法，此类不能实例化
+第七，什么时候用assert。 
+Assert用来判断一个语句是否为真，一般用在调试和测试阶段，在发布版本中一般没有
+
+第八，GC是什么? 为什么要有GC?
+http://www.cnblogs.com/aigongsi/archive/2012/04/06/2434771.html
+
+Java内存管理机制
+1.	jvm如何知道哪些对象需要回收？
+*引用计数法
+每个对象上都有一个引用技术，对象没被引用一次，计数器+1，对象被释放，引用器-1。引用器为0，则该对象可以回收。但会在对象A，对象B循环引用时失效
+*Root搜索算法
+定义几个root对象，如果对象不能达到root对象则会被回收
+Root对象有：
+•	被启动类（bootstrap加载器）加载的类和创建的对象
+•	jvm运行时方法区类静态变量(static)引用的对象
+•	jvm运行时方法去常量池引用的对象
+•	jvm当前运行线程中的虚拟机栈变量表引用的对象
+•	本地方法栈中(jni)引用的对象
+2.	java内存结构
+Jvm在内存分为两部分：一个是数据堆，一个是栈。
+•	堆是给程序用的。启动时，局部变量、临时变量全都放到堆中，堆中的内存由垃圾回收器来管理
+•	栈是给JVM自己用的，垃圾回收器不释放，当超过变量作用域时，java自动释放
+
+JAVA内存空间类型：
+栈内存：每个线程私有
+堆内存：每个线程公用
+方法区：加载类的反射信息、函数代码、编译常亮
+原生方法栈：主要用于jni，很少涉及
+http://yale.iteye.com/blog/1013322
