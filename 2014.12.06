@@ -1,1 +1,78 @@
-test
+第十九，List, Set, Map是否继承自Collection接口?
+List 与 Set均实现Collection接口，Map无明显实现接口
+Hashtable、Hashmap 均实现map接口
+Hashtable继承Dictionary类，Hashmap继承Abstractmap类
+
+第二十，abstract class和interface有什么区别?
+（1）	关系不同，abstract class与子类之间是“is-a”关系，interface与其实现类之间是“has-a”关系，一个类只能有一种继承关系，但却可以实现多个Interface
+（2）	成员变量不同，abstract可以有任意成员变量，interface只能有static final变量，而且一般不会使用
+（3）	方法不同，abstract里可以有private或非abstract的方法，interface里只能有public abstract的方法
+
+第二十一，abstract的method是否可同时是static,是否可同时是native，是否可同时是synchronized?
+首先理解各个关键词的作用，
+Abstract意味着该方法只有声明，没有实现，实现交给了子类
+Static意味着这个方法属于类本身而不属于对象，但抽象方法无法实例化
+Native意味着改方法在此处只有声明，具体的实现依赖计算机底层（一般通过C）,二者有矛盾
+Synchronized是进程锁，abstract方法无东西可锁
+所以答案应该是都不可以
+
+第二十二，接口是否可继承接口? 抽象类是否可实现(implements)接口? 抽象类是否可继承实体类(concrete class)?
+接口可以继承接口，接口可以有多重继承
+抽象类能实现接口
+抽象类可以继承实体类，典型的应用就是所有类都继承自Object类，但前提是该类需要明确声明构造函数
+
+第二十三，启动一个线程是用run()还是start()?
+Run()就是普通的方法，当启动run时，它在当前线程执行
+Start()启动一个新的线程，让虚拟机知道该线程已经准备好了，可以在适当的时机启动
+所以应该用start
+
+第二十四，构造器Constructor是否可被override?
+不能被override因为构造器不能被继承，所以也不能被override
+
+第二十五，是否可以继承String类?
+不能，string类被声明成final
+
+第二十六，当一个线程进入一个对象的一个synchronized方法后，其它线程是否可进入此对象的其它方法?
+不能，synchronized意味着同一时刻只能由一个线程访问
+
+第二十七，try {}里有一个return语句，那么紧跟在这个try后的finally {}里的code会不会被执行，什么时候被执行，在return前还是后?
+（1）	只要try语句启动了，finally一定会执行
+（2）	finally语句的执行时间是在try或catch的return语句之前
+
+第二十八，编程题: 用最有效率的方法算出2乘以8等於几?
+2<<3;
+>>>逻辑右移，无符号，左边补0
+>>算术右移，有符号，左边补符号位
+
+第二十九，两个对象值相同(x.equals(y) == true)，但却可有不同的hash code，这句话对不对?
+不对，equals相等的情况下hashcode一定相等；反之未必
+
+第三十，当一个对象被当作参数传递到一个方法后，此方法可改变这个对象的属性，并可返回变化后的结果，那么这里到底是值传递还是引用传递?
+Java永远是值传递，当一个对象被当做参数传入方法后，参数的值就是对象的引用。引用的内容可以在方法中被改变，但引用是不会改变的。
+
+第三十一，swtich是否能作用在byte上，是否能作用在long上，是否能作用在String上?
+Swtich中的参数一个整数表达式，所有能够隐式转换为int的变量都可以，如int,  short, char, byte，另外enum也可以。Long和string不行
+
+第三十二，编程题: 写一个Singleton出来。
+Singleton有多种实现方法
+（1）	懒汉方法，调用时才返回实例。但该方法一般要求用synchronized关键字同步，不然依然可以产生多个实例。但同步又会带来效率低的问题，所以很多时候如果没有明确要求多线程操作，改方法不会是首选。
+public class Singleton{
+	private static Singleton instance = null;
+	public static synchronized Singleton getInstace()
+{
+	if(instance == null)
+		instance = new Singleton();
+	return instance;
+}
+}
+
+（2）	饿汉方法，类加载的时候就产生实体，只提供调用方法。该方法避免了同步问题，但有时类加载会消耗较多时间。
+public class Singleton{
+	private Singleton(){}
+	private static Singleton instance = new Singleton();
+	public static getInstace()
+{
+	return instance;
+}
+}
+http://cantellow.iteye.com/blog/838473
