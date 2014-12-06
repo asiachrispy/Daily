@@ -41,4 +41,19 @@ Object类中equals用来比较地址，hashcode返回object的内存地址
 在大多数类，如String, 包装类等中，equals和hashcode都被重写。其中equals被重写成比较内容，hashcode重写成其他比较方式（比如hashtable中重写成对key进行运算后返回值）
 对于一般得object， 若equals相等，hashcode一定相等（前者比较内容是否相等，后者是基于内容的散列运算，并不保证相等），反之则未必。
 
+1.数组求和（递归方法）
+#include <iostream>
 
+using namespace std;
+
+int sum(int* p, int n)
+{
+    return (n!=1?*p+sum(++p,--n):*p);
+}
+
+int main()
+{
+    int data[] = {1,2,3,4,5};
+    int rc = sum(data,5);
+    cout << rc << "\n";
+}
