@@ -45,4 +45,5 @@ http://blog.csdn.net/lchen_fhhls/article/details/3841930
 
 10 怎么样减少编译文件依赖。.h和.cpp有什么区别。inline问题。
 只要有可能，尽量让头文件不要依赖于别的文件；如果不可能，就借助于类的声明，不要依靠类的定义。其它一切方法都源于这一简单的设计思想。
+使用#import和#include都会引入类的全部信息，这样会影响编译效率，用@class可以缓解编译依赖的情况
 http://club.topsage.com/thread-2224357-1-1.html
