@@ -1,1 +1,23 @@
-Test
+1.	c++中虚函数是怎样实现的。
+（1）	每个类都为各自保留一个vtable用来储存各自函数的调用信息
+（2）	每个类都自动保留一个vpointer用来指向各自的vtable
+（3）	每个vtable里的entry都引用most-derived的function
+http://www.learncpp.com/cpp-tutorial/125-the-virtual-table/
+http://www.go4expert.com/articles/virtual-table-vptr-t16544/
+
+2.	C++如何为类分配内存？
+
+http://www.cnblogs.com/bizhu/archive/2012/09/25/2701691.html
+3.	C++对象内存模型
+http://www.cnblogs.com/kekec/archive/2013/01/27/2822872.html
+
+4.  为什么要有虚函数机制。
+什么情况会使用多态机制。
+string的内存怎么实现的，长度的动态变化怎么处理，为什么两倍扩展。
+string a; string b = a;这时会不会有内存拷贝相关的东西。
+如果你自己设计一个类，管理可变长度的字符串，你怎样考虑优化。
+引用计数的实现，效率。
+STL库了解的多吗。map是怎么实现的。
+iterator++和++iterator区别，哪种效率高。
+程序的编译时间和什么相关。
+怎么样减少编译文件依赖。.h和.cpp有什么区别。inline问题。
