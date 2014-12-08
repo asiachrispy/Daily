@@ -1,0 +1,48 @@
+4 string的内存怎么实现的，长度的动态变化怎么处理，为什么两倍扩展。 
+String为每个字符串分配一个比已有字符串大得多的空间，如果该空间用完，则拷贝内容到新的内存空间，大小为原空间的两倍。
+
+5 string a; string b = a;这时会不会有内存拷贝相关的东西。 
+String b=a; 调用拷贝构造函数，它的基本参数是本类型的一个引用变量。一般来说，编译器会自动给对象加一个默认拷贝构造函数，能够完成简单的浅拷贝。
+
+
+6 如果你自己设计一个类，管理可变长度的字符串，你怎样考虑优化。
+String类优化
+http://my.oschina.net/u/551903/blog/134000
+（1）	静态字符串拼接用“+”，编译器会进行优化
+（2）	动态字符串拼接用Stringbuilder或StringBuffer，减少中间变量String的数量
+（3）	构造函数上，使用new会造成大量的String重复，所以应缓存字符串。但intern()方法容易导致系统outofmemeory，所以推荐手动缓存
+
+7 引用计数的实现，效率。 
+（1）以String为例，对于每一个new出来的数据，额外开辟一个空间存放对于该数据的引用。
+（2）每多一个引用count加一，每销毁一个引用count减一
+（3）一般只有拷贝构造函数、赋值和assign才会引发引用技术机制，而且一旦引用的对象做出修改，则共享内存结束，二者分别引用不同数据。
+对于String的处理，java与c++差异较大，Java用string池来存储String，c++利用引用计数机制。
+C++中，下列结果为false，而在java中，结果为true
+std::string a = "Hello";
+std::string b = "Hello";
+assert(b.data() != a.data());
+Java中，引用计数一般用作gc过程，而C++中引用计数更多用作内存共享
+http://blog.csdn.net/haoel/article/details/24065
+http://www.cnblogs.com/promise6522/archive/2012/03/22/2412686.html
+
+8 STL库了解的多吗。map是怎么实现的。 
+STL->Container:
+(1)	Vector，数组
+(2)	List，双向链表
+(3)	Deque，分块线性储存结构
+(4)	set，有序容器，红黑树
+(5)	multiset，同set，元素可以重复
+(6)	stack，由Deque实现
+(7)	queue，由Deque实现
+(8)	priority_queue
+(9)	map,，红黑树
+(10)	multimap，同map，元素可以重复
+map, multimap, set, multimap中元素不能修改（因为会违反排序特性），只能删除后再添加
+http://daoluan.net/blog/stl-stack-queue/
+9 iterator++和++iterator区别，哪种效率高。
+在遍历中，二者遍历次数相同，但效率不同。在STL中，++iterator返回引用，iterator++返回临时对象，因为iterator是类模板，每次使用都要创建并销毁一个临时对象，影响效率。
+http://blog.csdn.net/lchen_fhhls/article/details/3841930
+
+10 怎么样减少编译文件依赖。.h和.cpp有什么区别。inline问题。
+只要有可能，尽量让头文件不要依赖于别的文件；如果不可能，就借助于类的声明，不要依靠类的定义。其它一切方法都源于这一简单的设计思想。
+http://club.topsage.com/thread-2224357-1-1.html
