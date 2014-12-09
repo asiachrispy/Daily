@@ -47,3 +47,40 @@ http://blog.csdn.net/lchen_fhhls/article/details/3841930
 只要有可能，尽量让头文件不要依赖于别的文件；如果不可能，就借助于类的声明，不要依靠类的定义。其它一切方法都源于这一简单的设计思想。
 使用#import和#include都会引入类的全部信息，这样会影响编译效率，用@class可以缓解编译依赖的情况
 http://club.topsage.com/thread-2224357-1-1.html
+
+11 如何返回链表的第四分之一个结点。
+用两个指针，其中一个指针每一次走1步，另外一个每一次走4步，等第二个指针到达时第一个指针指向的就是四分之一节点
+
+12 网络协议模型几层？
+OSI(Open System Interconnection)，开放式系统互联，是一个参考标准，用来描述互联网中各个部分如何通讯。一共七层
+http://blog.csdn.net/yaopeng_2005/article/details/7064869
+http://www.cnblogs.com/fengzanfeng/articles/1339347.html
+第一层  物理层：机械、电子、定时接口通信信道上得比特流
+第二层  数据链路层：物理寻址，同时将原始比特流变为逻辑传输线路
+第三层  网络层：控制子网的运行，如逻辑编址、分组传输
+第四层  传输层：接受上一层数据，在必要的时候进行分割
+第五层  会话层：不同机器上的用户建立及管理会话
+第六层  表示层：信息的语法语义及关联
+第七层  应用层：各种应用程序协议，如HTTP、FTP、SMTP、POP3
+
+实际应用的是TCP/IP协议，由美国国防部开发，是互联网的标准，分五层
+                      硬件                          协议
+应用层：                                      HTTP，FTP，SMTP，Telnet
+传输层：四层交换机                            TCP，UDP
+网络层：路由器、三层交换机                    IP，ICMP
+数据链路层：网桥、以太交换机、网卡            SLIP，PPP，ARP
+物理层：中继器、集线器、双绞线                ISO2110，IEEE802
+
+13  TCP协议的三次握手
+位码寄tcp标志位，有六种：SYN(synchronous建立联机) ACK(acknowledgement 确认) PSH(push传送) FIN(finish结束) RST(reset重置) URG(urgent紧急)Sequence number(顺序号码) Acknowledge number(确认号码)
+第一次握手：主机A发送位码为SYN = 1，随机产生Seq number = 1234567到服务器，主机由SYN=1知道，A要求建立连接。
+第二次握手：主机B收到请求后要求确认联机信息，向A发送ACK number=(主机A的Seq number+1)，SYN=1,CKY=1，随机产生seq number = 7654321
+第三次握手：主机A收到检查ACK是否正确，即第一次发送的seq+1,以及ACK是否为1，若正确，主机A再次发送Seq=（主机B的seq + 1），ACK=1，主机B收到确认值则建立成功
+
+14 TCP协议的四次握手
+用于拆除连接，原理跟三次握手相似，不过要求双方都要关闭
+第一次握手，A发送FIN=1,ACK=Z和SEQ=X
+第二次握手，B收到，发回ACK=X+1,SEQ=Z
+第三次握手，B发送FIN=1,ACK=X,SEQ=Y
+第四次握手，A收到，发回ACK=Y+1,SEQ=X
+http://blog.csdn.net/whuslei/article/details/6667471
