@@ -1,13 +1,56 @@
 1. 怎样判断链表是否有环？
+(1)简单的方法可以是在链表上做记号，如果发现经过同样的node，则表示有环，但会弄脏数据
+(2)还可以把node存到hashtable里，每次遇到一个新的node就在hashtable里进行查询
+(3)比较好的方法是，使用两个指针，一个每次走一步，另一个每次走两步，若能相遇，则说明有环
+
 2. Fibonacci, Bubble sort, selection sort
+bubble sort, compare each two element, and put the big part in the last
+selection sort, iterate the whole array to find the minial number and put it to the first place.
+
 3. Thread and Process
+(1)Each program in a pc is a process, each process has mutiple threads. Basically, thread is a light process.
+(2)Multiple thread can run simultaneously. Take the email system for example, we can have one thread checking for emails and another thread showing a interface for client.
+(3)Actually, computer run one thread at one time and switch between different threads.
+(4)Multiple threads in a single process share the same memory. By contrast, different processes share different memeory regions and can only communicate through special mechanism.
+
 4. Mutex and semaphore
+Mutex is like a lock, it makes sure that in parallel programming, only one thread can access a shared resource at a given time.
+Basically, mutex is a integer that starts from 1, when a thread tries to access a resource, the mutex decrease one and wait unitl the integer is positive.
+When the thread is done modification, it increase the integer by 1 and the lock is released.
+
+semaphore is more general than mutex
+The difference is that semaphore will start from integer bigger than 1. The number used by semaphore is the threads that may access the resources. 
+Semaphore support "wait" and "signal" operations, like lock and unlock in mutex.
+
 5. Synchronized methods in Java
-6. What is deadlock and how to avoid it
+In java, each project has a mutex, when a synchronized method is called in the object, the mutex is locked.
+This makes sure that only one synchronized method is called in an object in an given time.
+
+6. What is deadlock and how to avoid it? What is race condition and how to avoid it?
+Deadlock refers to the situation that two threads block each others. It often happens in resource request.
+E.g. T1,T2 both need A and B, T1 request A and T2 request B, so they both need to wait.
+The usual solution is to assign an order to the locks.
+
+Race condition is two threads interactive in a neagtive way. For example, the intermediate result of thread A is overwritten by thread B.
+The solution is to use lock to prevent the data to be modified. But inappropriate lock will cause deadlock.
+
 7. What is polymorphism?
+Polymorphism is the ability of one method to have differnet behaviors depending on the type of object it is being called on or different parameters.
+Take constructors for example.
+Or the ability an object to take differnet forms. For example, an parent class can reference different child class.
+
 8. How does error handling works?
+Basic method is to use try-catch block
+
 9. Do you know what is exception handling?
+Normally, there are three kinds of exceptions
+Checked exceptions, somethings can be predicted, e.g. IOException
+Runtime exceptions, cannot be found in the compilation, e.g. NULLPointer
+Errors, severe problem, e.g. out of memory
+
 10. sorting algorithm that is quicker than quick sort
+It's possible, for example, flash sorting
+
 11. How does multithreading works? Advantages and Disadvantages? What is the race condition?
 12. Memory management difference between java and c++
 13. Difference between hashtable in java and c++
