@@ -51,8 +51,3 @@ Errors, severe problem, e.g. out of memory
 10. sorting algorithm that is quicker than quick sort
 It's possible, for example, flash sorting
 
-11. How does multithreading works? Advantages and Disadvantages? What is the race condition?
-12. Memory management difference between java and c++
-13. Difference between hashtable in java and c++
-14. Is there a hash function which has no collisions?
-15. How hashtalbe works?
