@@ -1,1 +1,6 @@
-Test
+1. Sorting algorithm that is quicker than quick sort
+2. How does multithreading works? Advantages and Disadvantages? What is the race condition?
+3. Memory management difference between java and c++
+4. Difference between hashtable in java and c++
+5. Is there a hash function which has no collisions?
+6. How hashtalbe works?
