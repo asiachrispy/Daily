@@ -1,1 +1,25 @@
-test
+1. How does multithreading works? Advantages and Disadvantages? 
+CPU switch between different threads.
+Advantages:
+(1)make better use of device resources
+(2)shared resources
+Disadvantges:
+(1)Security problem
+(2)Block
+
+2. Memory management difference between java and c++
+Simply speaking,
+In java, memory can be divided into stack memory and heap memory. Most of memory management work is done by GC. 
+Basic type of data will be put in stack and new() data will be put in the heap memory.
+
+In C++, there are also stack memory and heap memory. The difference is that data in heap memory will need to be released by programmer.
+
+4. How to get hashcode in java
+The core code in java is hash = hash*31 + val[off++];
+此处，选择31等同于选择31进制，那么如果每位字符的浮动范围在31以内，那么每一位的不同都不可能由其他位的不同来抵消。所以当hashkey里的key是纯英文或者纯数字时，基本不会有重复；而如果以任意字符做Key，则冲突率升高，因此不建议使用
+http://donlianli.iteye.com/blog/1979674
+
+5. Is there a hash function which has no collisions?
+Not possible
+
+6. How hashtalbe works?
