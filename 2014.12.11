@@ -1,3 +1,19 @@
+0. Bucket sorting
+算法可视化
+https://www.cs.usfca.edu/~galles/visualization/Algorithms.html
+排序算法稳定性总结
+http://blog.csdn.net/hkx1n/article/details/3922249
+排序算法速度能否超过nlogn
+https://www.byvoid.com/blog/sort-radix
+
+Native bucket sorting, http://www.cnblogs.com/kkun/archive/2011/11/23/2260267.html
+Bucket sorting, hashlike sorting algorithm, around O(n)
+Counting sorting，O(n+k), k is the largest number
+Radix sorting, 按位排序, O(d*(n+k)), d is the number of iterations(logM), n is the length, k is the base number/2,8,10,16
+http://notepad.yehyeh.net/Content/Algorithm/Sort/Radix/Radix.php
+
+
+
 1. Sorting algorithm that is quicker than quick sort
 2. How does multithreading works? Advantages and Disadvantages? What is the race condition?
 3. Memory management difference between java and c++
