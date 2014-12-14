@@ -1,1 +1,59 @@
-test
+class A
+{
+public:
+    int a;
+    static int b;
+    void f1();
+    static void f2();
+    virtual void f3();
+};
+    
+1.这个类的大小是多大？
+（1）类中的函数全部不计入类大小，只考虑成员变量
+（2）静态成员变量存在global区域不予考虑
+（3）有虚函数时类会自动补充虚指针vptr，需要多4 Bytes
+（4）最后进行自动对齐，得到8
+所以sizeof(A)=8
+
+2.C++内存对齐
+按照类成员中最长的变量进行对齐
+http://www.cppblog.com/cc/archive/2006/08/01/10765.html
+
+3.static成员变量如何存储的？
+static成员变量属于类，而不属于具体对象。当类被加载时，static成员变量就会被存在内存中特殊的位置，不会随着对象的创建改变。
+
+4.static成员函数和普通函数有什么区别？
+（1）成员函数可以通过类名直接调用，普通函数需要先创建实例
+（2）成员函数在类加载的时候实例化，普通函数在对象创建时实例化
+
+5.Java中类加载过程
+（1）寻找JRE目录，寻找jvm.dll，初始化JVM
+（2）产生一个bootstrap loader（启动类加载器）
+（3）bootstrap loader自动加载Extended loader（扩展类加载器），并将其父loader设置为bootstrap loader
+（4）bootstrap loader自动加载Appclass loader（扩展类加载器），并将其父loader设置为Extended loader
+（5）最后由appclass loader加载helloworld.class
+http://allenhk.iteye.com/blog/1866288
+
+6.一个整数数组，长度为n，每个数的范围都是1~n+2，每个数字不重复，乱序的，求缺失的两个数组。
+（1）创建一个长为n+2的数组，初始化所有值为1，遍历给定数组，将对应的地方置零，再遍历整个n+2数组，找到缺失的数，速度O（n）,空间O（n）
+（2）将数组排序，然后遍历找出缺失的数，速度O(nlogn)
+（3）在原数组上进行操作，将每个数值映射到对应下标的数组处，如A[0]=10，放到A[10-1]处，中间通过一个中间变量来中转。对于超过n的变量，忽略，速度O（N）,空间O（1）
+
+7.TCP的拥塞窗口功能。
+用来控制发送双发之间的流量，避免网络拥塞
+
+8. 讲一下垃圾收集，Java的垃圾收集是怎样的。
+Java的垃圾收集使用释放无用的对象
+较早使用reference couting
+更流行的是对象引用遍历
+
+9.数据库索引，为什么需要索引，常用的索引有哪些，聚簇索引是怎样的。
+http://blog.csdn.net/beijiguangyong/article/details/9004381
+
+10.static有哪些作用、虚函数相关的一些东西、构造函数是否可以为虚函数、析构函数是否可以为虚函数、静态成员函数是否可以为虚函数等等，
+以及虚函数带来的sizeof问题等等。
+（1）构造函数不能为虚函数，因为虚函数会总动调用vptr，如果函数没有被构造，不会有内存存放vptr。
+（2）析构函数可以为虚函数，而且在其作为基类时常常使用虚函数做析构函数，目的在于释放其子类
+http://blog.csdn.net/jiadebin890724/article/details/7951461
+
+11.已知一个randM函数，可以随机返回1~M中的一个数实现函数int randN(int n)
