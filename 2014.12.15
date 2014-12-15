@@ -1,0 +1,8 @@
+1.java中实现多态的机制是什么？
+
+2.写clone()方法时，通常都有一行代码，是什么？ 
+super.clone()
+
+3.深克隆、浅克隆、clone()?
+
+4.hashmap里面存入arrayList，能够直接修改arraylist里面的内容吗?
