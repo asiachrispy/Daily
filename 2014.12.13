@@ -1,0 +1,54 @@
+1. super与this,super()与this()的区别？ 
+super指向父类对象，this指向本身对象
+二者均不能用于static方法中
+
+2. 作用域public,protected,private,以及不写时的区别？
+public:全部可以访问
+protected:子类可以访问
+default:本包可以访问
+private:类内部可以访问
+
+3. JAVA的事件委托机制和垃圾回收机制 
+事件委托机制：一个源产生一个事件时，把他送到一个或多个监听器那里，在这种机制种，监听器只是等待，一旦收到事件，处理事件并返回；
+典型的例子如interface的lisenter和event
+
+4. 在JAVA中，如何跳出当前的多重嵌套循环？
+两种方法：
+（1）使用break 搭配关键字，类似于goto，如
+ok:for(){
+  for(){
+    break ok;
+  }
+}
+（2）使用一个boolean变量，如
+for(;flag!=false;){
+  for(){
+    flag = true;
+    break;
+  }
+}
+
+5. 什么是java序列化，如何实现java序列化？
+序列化允许你将一个对象的状态写成byte流保存起来，易于网络传播。
+一般一个类需要实现序列化，要实现Serializable接口
+
+6. 一个”.java”源文件中是否可以包括多个类（不是内部类）？有什么限制？
+可以包含多个类，但只有一个能够是Public并与文件同名
+当一个文件包含多个类时，编译会产生多个.class文件
+
+7.java引用与类的大小
+一般在32位平台上，一个引用占4byte,一个空对象8byte,类的大小在计算完大小后按照8byte对齐
+
+8.什么是类的返射机制?
+反射机制指的是，在运行过程中，对于任意类都可以知道其方法和属性
+对于任意对象都可以调用其方法和属性
+
+9.反射的常用方法? 
+（1）通过类本身，this.getClass();
+（2）通过子类对象，A a = new A();a.getClass();
+（3）通过类名，com.test.getTest.class;
+（4）通过类名字符串，Class.forname("com.test.getTest");
+
+10.java中会存在内存泄漏吗，请简单描述。
+不存在严格意义上的内存泄露
+http://www.mian4.net/mianshiti/it/javacxy/29129.html
