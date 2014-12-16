@@ -8,3 +8,6 @@
 Java中，静态绑定完成在程序编译期（将Java源代码编译成.class文件）期就完成，一般只有final,static,private和构造方法是静态绑定
 动态绑定则是在程序运行时（jvm加载.class文件，并运行程序）由对象自己去查询调用对象。
 http://blog.csdn.net/zhangjk1993/article/details/24066085
+
+3.内部类如何实例化?
+内部类对于外部来说是隐藏的，因此如果需要访问内部类，需要先通过外部类的实例得到句柄，如x.new A();
