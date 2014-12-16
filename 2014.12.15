@@ -4,6 +4,9 @@
 super.clone()
 
 3.深克隆、浅克隆、clone()?
+clone()默认是浅克隆，对于对象中的引用变量无法达到克隆的目的
+需要对引用型变量单独处理，实现深克隆
+http://blog.csdn.net/shootyou/article/details/3945221
 
 4.hashmap里面存入arrayList，能够直接修改arraylist里面的内容吗?
 可以，http://blog.sina.com.cn/s/blog_59ca2c2a0100qhjx.html
