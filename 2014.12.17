@@ -1,2 +1,32 @@
 1.c++里，指针作为参数时，对其进行赋值
 http://blog.csdn.net/fjb2080/article/details/5623427
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+void print(string fix, string left)
+{
+	if(left.size() == 0)
+	{
+		cout << fix << "\n";
+	}
+	else
+	{
+		for(int i=0;i<left.size();i++)
+		{
+			string left1 = fix + left.substr(i,i+1);
+			string right1 = left.substr(0,i) + left.substr(i+1,left.size());
+			print(left1,right1);			
+		}
+	}
+
+} 
+
+int main()
+{
+	string s = "abcd";
+	//cout << s.substr(0,0) << "\n";
+	print("",s);
+}
