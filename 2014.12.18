@@ -14,4 +14,6 @@ For(int i=0;i<s.length();i++)
 	String right = s.substring(i+1,s.length());
 }
 
-2.given a vector of integers, v[i] represent the stock price on day i. Now you may do at most K transactions. you must sell your stock before you buy it again and that means you can NOT have two stocks at the same time. write a program to find max profit you can get.
+2.Given a vector of integers, v[i] represent the stock price on day i. Now you may do at most K transactions. 
+you must sell your stock before you buy it again and that means you can NOT have two stocks at the same time. 
+write a program to find max profit you can get.
