@@ -49,3 +49,35 @@ int main()
 	int rc = solution1(v_data);
 	cout << rc << "\n";
 }
+
+// using array only
+
+#include <iostream>
+using namespace std;
+int sum(int* data, int begin, int end)
+{
+	return (begin<end?data[begin]+sum(data,begin+1,end):data[begin]);
+}
+int solution1(int* data, int length)
+{
+	int max = 0;
+	for(int i=0;i<length;i++)
+	{
+		for(int j=i;j<length;j++)
+		{
+			int temp = sum(data,i,j);
+			if(temp > max)
+			{
+				max = temp;
+			}
+		}
+	}
+	return max;
+}
+int main()
+{
+	int data[] = {4,6,7,1,-2,-5,1,2,3};
+	int length = sizeof(data)/sizeof(int);
+	int rc = solution1(data,length);
+	cout << rc << "\n";
+}
