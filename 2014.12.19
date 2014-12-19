@@ -1,0 +1,27 @@
+最大字串和，O(n)
+
+#include <iostream>
+#define MAX(a,b) (a>b?a:b)
+using namespace std;
+
+int solution(int* data, int length)
+{
+    int max = 0;
+    int sum = 0;
+    for(int i=0;i<length;i++)
+    {
+        sum += data[i];
+        sum = MAX(sum, 0);  // if(sum < 0){ sum = 0;}
+        max = MAX(max, sum); // if(max < sum){ max = sum;}
+    }
+    return max;
+}
+
+int main()
+{
+    int data[] = {2,3,5,7,-2,-4,5,-6,-1,2,3,-5,7,-9};
+    int length = sizeof(data)/sizeof(int);
+    //int times = 3;
+    int rc = solution(data, length);
+    cout << rc << "\n";
+}
