@@ -101,3 +101,86 @@ int main()
 样例输出
 1
 2
+
+
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+struct node
+{
+	int head,tail;
+	node(){}
+	node(int x,int r)
+	{
+		head = (x-r<0?0:x-r);
+		tail = x+r;
+	}
+	void createNode(int x,int r)
+	{
+		head = (x-r<0?0:x-r);
+		tail = x+r;
+	}
+};
+
+bool cmp(node a, node b)
+{
+	if(a.head < b.tail) return true;
+	return false;
+}
+
+int main()
+{
+	int N=0,n=0;
+	double w=0.0,h=0.0;
+	cin>>N;
+	int* result = new int[N];
+	for(int i=0;i<N;i++)
+	{
+		cin>>n>>w>>h;
+		node* temp = new node[n];
+		double xi=0.0,yi=0.0,ri=0.0;
+		for(int j=0;j<n;j++)
+		{
+			cin>>xi>>ri;	
+			temp[j].createNode(xi,ri);
+		}
+		//sort(temp,temp+n,cmp);
+
+		double sum = 0;
+		int counter = 0;
+		while(sum<w)
+		{
+			double max = 0;
+			for(int k=0;k<n;k++)
+			{
+				double left = temp[k].head;
+				double right = temp[k].tail;
+				if(left<=sum&&max<right)	max = right;
+			}
+			if(max >=w)
+			{
+				result[i] = ++counter;
+				counter = 0;
+				break;
+			}
+			else if(sum == max)	
+			{
+				result[i] = counter;
+				counter = 0;
+				break;
+			}
+			else
+			{
+				cout << "\n";
+				sum = max;
+				counter++;
+			}
+		}
+	}
+
+	for(int i=0;i<N;i++)
+	{
+		cout << result[i] <<"\n";
+	}
+}
