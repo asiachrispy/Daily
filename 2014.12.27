@@ -1,0 +1,97 @@
+1. Add Two Number
+You are given two linked lists representing two non-negative numbers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+
+Think about how to make code short
+
+void addNode(ListNode** root, int num)
+{
+    if(*root==NULL)
+    {
+        *root = new ListNode(num);
+    }
+    else
+    {
+        ListNode* temp = *root;
+        while(temp->next != NULL)
+            temp = temp->next;
+        ListNode* node = new ListNode(num);
+        temp->next = node;
+    }
+}
+
+
+ListNode* addTwoNumbers(ListNode* l1, ListNode* l2)
+{
+    ListNode* result = NULL;
+    bool overTen = false;
+    while(l1!=NULL&&l2!=NULL)
+    {
+        int temp;
+        if(overTen == true)
+            temp = l1->val + l2->val + 1;
+        else
+            temp = l1->val + l2->val;
+        if(temp >= 10)
+        {
+            overTen = true;
+            temp -= 10;
+        }
+        else
+        {
+            overTen = false;
+        }
+        addNode(&result, temp);
+        l1 = l1->next;
+        l2 = l2->next;
+    }
+    if(l1==NULL)
+    {
+        while(l2!=NULL)
+        {
+            int temp;
+            if(overTen == true)
+                temp = l2->val + 1;
+            else
+                temp = l2->val;
+            if(temp >= 10)
+            {
+                overTen = true;
+                temp -= 10;
+            }
+            else
+            {
+                overTen = false;
+            }
+            addNode(&result, temp);
+            l2 = l2->next;
+        }
+    }
+    else
+    {
+        while(l1!=NULL)
+        {
+            int temp;
+            if(overTen == true)
+                temp = l1->val + 1;
+            else
+                temp = l1->val;
+            if(temp >= 10)
+            {
+                overTen = true;
+                temp -= 10;
+            }
+            else
+            {
+                overTen = false;
+            }
+            addNode(&result, temp);
+            l1 = l1->next;
+        }
+    }
+    if(overTen == true)
+        addNode(&result, 1);
+    return result;
+}
