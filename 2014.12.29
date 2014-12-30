@@ -1,0 +1,30 @@
+1.Median of Two Sorted Arrays 
+There are two sorted arrays A and B of size m and n respectively.
+Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+public:
+double findMedianSortedArrays(int A[], int m, int B[], int n) {
+    double d_result = 0.0;
+    int* result = new int[m+n];
+    int i=0,j=0,k=0;
+    while(i<m&&j<n)
+    {
+        if(i<m&&j<n&&A[i]<B[j])
+            result[k++]=A[i++];
+        if(i<m&&j<n&&A[i]>=B[j])
+            result[k++]=B[j++];
+    }
+    if(i!=m-1||i==0)
+        while(i<m)
+            result[k++]=A[i++];
+    if(j!=n-1||j==0)
+        while(j<n)
+            result[k++]=B[j++];
+    if((m+n)%2==0)
+        d_result = (double)(result[(m+n)/2]+ result[(m+n)/2-1])/2;
+    else
+        d_result = (double)result[(m+n)/2];
+    return d_result;
+}
+
+(1)deal with the situation that one of the two arrays is empty
+(2)the median for a n-length array with even elements is (array[length/2] + array[length/2-1])/2
