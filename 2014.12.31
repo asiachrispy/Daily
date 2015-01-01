@@ -13,6 +13,7 @@ convert("PAYPALISHIRING", 3) should return "PAHNAPLSIIGYIR".
 
 
 string convert(string s, int nRows) {
+    if(nRows == 1) return s;
     string result = "";
     for(int i=0;i<nRows;i++)
     {
