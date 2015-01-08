@@ -1,0 +1,17 @@
+数组与指针的关系
+http://blog.csdn.net/jiangxinyu/article/details/7767065
+
+string与char*之间的关系
+
+Char* s
+Char* s = “hello world”;
+数据”hello world”放在静态数据区，指针*s指向这个首地址，其中的内容无法修改
+
+Char s[]
+Char s[] = “hello world”;
+数据存放在两处，一份在静态数据区，另一份在栈中，*s指向栈中的地址，其中内容可以修改。
+http://blog.sina.com.cn/s/blog_62c920590100igwa.html
+
+String
+Append(),参数为string，不能是char但可以是char*/char[]，因为二者等价
+Push_back，参数为char
