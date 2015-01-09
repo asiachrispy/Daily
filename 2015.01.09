@@ -1,0 +1,42 @@
+1. Depth first searching
+
+static vector<vector<int>> result;
+
+void search(int target, vector<int> preResult, vector<int> candidate)
+{
+	if(target==0) 
+	{
+		result.push_back(preResult);
+	}
+	else
+	{
+		for(int i=0;i<candidate.size();i++)
+		{
+			int temp = candidate[i];
+			if(target-temp>=0)
+			{
+				preResult.push_back(temp);
+				search(target-temp,preResult,candidate);
+			}
+		}		
+	}
+	
+}
+
+int main()
+{
+
+	int data[] ={1,2,3};
+	vector<int> v_data(data,data+3);
+	vector<int> random;
+	int target = 7;
+	search(target,random,v_data);
+	for(int i=0;i<result.size();i++)
+	{
+		for(int j=0;j<result[i].size();j++)
+		{
+			cout << result[i][j] <<" ";
+		}
+		cout << "\n";
+	}
+}
