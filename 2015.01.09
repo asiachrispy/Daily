@@ -1,5 +1,6 @@
-1. Depth first searching
+Depth first searching
 
+(1) Using global varaible.
 static vector<vector<int>> result;
 
 void search(int target, vector<int> preResult, vector<int> candidate)
@@ -20,23 +21,44 @@ void search(int target, vector<int> preResult, vector<int> candidate)
 			}
 		}		
 	}
-	
 }
 
-int main()
-{
+(2)For each candidate, there are two possible choices: choose it or not, most effienct
+    void search(vector<int>& num, int next, vector<int>& pSol, int target, vector<vector<int> >& result)
+    {
+        if(target == 0)
+        {
+            result.push_back(pSol);
+            return;
+        }
 
-	int data[] ={1,2,3};
-	vector<int> v_data(data,data+3);
-	vector<int> random;
-	int target = 7;
-	search(target,random,v_data);
-	for(int i=0;i<result.size();i++)
-	{
-		for(int j=0;j<result[i].size();j++)
-		{
-			cout << result[i][j] <<" ";
-		}
-		cout << "\n";
-	}
+        if(next == num.size() || target - num[next] < 0)
+            return;
+
+        pSol.push_back(num[next]);
+        search(num, next, pSol, target - num[next], result);
+        pSol.pop_back();
+        search(num, next + 1, pSol, target, result);
+    }
+(3)recuring and cut
+void search(int target, vector<int> &candidate, vector<vector<int>> &result, vector<int> &preResult)
+{
+    if(target==0)
+    {
+        result.push_back(preResult);
+    }
+    else
+    {
+        for(int i=0;i<candidate.size();i++)
+        {
+            int temp = candidate[i];
+            if(target-temp>=0)
+            {
+                preResult.push_back(temp);
+                search(target-temp,candidate,result,preResult);
+                preResult.pop_back();
+            }
+        }
+    }
+    
 }
