@@ -13,11 +13,11 @@ http://onestraw.net/algorithm/leetcode-dfs-easy/
 3)从数据结构的角度分类
 a.Array
 b.Hash Table
-c.Linked List (重点)
+c.Linked List (重点)(不熟)
 d.String
 e.Heap
-f.Stack (重点)
-g.Tree  (重点)
+f.Stack (重点)(不熟)
+g.Tree  (重点)(不熟)
 h.Graph
 
 4)从算法的角度分类
@@ -25,9 +25,10 @@ a.Math
 b.Two Pointer (重点)
 c.Binary Search (重点)
 d.Divide and Conquer (DC)
-e.Dynamic Programming (DP) (重点)
+e.Dynamic Programming (DP) (重点)(不熟)
 f.Backtracking (重点)
 g.Greedy (重点)
 h.Sort (重点)
-i.Depth-first-Search (重点)
-j.Breadth-first Search (重点)
+i.Depth-first-Search (DFS)(重点)(不熟)
+j.Breadth-first-Search (BFS)(重点)(不熟)
+k.permutation
