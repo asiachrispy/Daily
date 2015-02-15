@@ -1,0 +1,33 @@
+Leetcode刷完快一半，前期进步很快，最近感觉到了瓶颈期，提高很慢。
+想了想大概还是因为在刷题的过程中没有形成有结构的知识网，每次做题都是完全从头开始，提高不大。
+之后打算换一种方法，将题目进行归类来刷，希望有好的效果。
+
+
+下面几个资源可以让分类更加方便
+1）Leetcode question diffculty distribution
+https://docs.google.com/spreadsheet/pub?key=0Aqt--wSNYfuxdGxQWVFsOGdVVWxQRlNUVXZTdEpOeEE&output=html
+
+2)对于DP,DFS,BFS,回文的解释
+http://onestraw.net/algorithm/leetcode-dfs-easy/
+
+3)从数据结构的角度分类
+a.Array
+b.Hash Table
+c.Linked List (重点)
+d.String
+e.Heap
+f.Stack (重点)
+g.Tree  (重点)
+h.Graph
+
+4)从算法的角度分类
+a.Math
+b.Two Pointer (重点)
+c.Binary Search (重点)
+d.Divide and Conquer (DC)
+e.Dynamic Programming (DP) (重点)
+f.Backtracking (重点)
+g.Greedy (重点)
+h.Sort (重点)
+i.Depth-first-Search (重点)
+j.Breadth-first Search (重点)
